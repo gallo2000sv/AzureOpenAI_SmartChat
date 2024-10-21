@@ -1,0 +1,17 @@
+[Unit]
+Description=Streamlit Application
+After=network.target
+
+[Service]
+User=your_username
+WorkingDirectory=/home/your_username/your_project_path
+ExecStart=/home/your_username/your_project_path/your_venv_name/bin/streamlit run app/streamlit_app.py --server.port 8501
+Restart=always
+
+# Databricks Configuration
+Environment=DATABRICKS_HOST=https://your-databricks-workspace.azuredatabricks.net
+Environment=DATABRICKS_TOKEN=your_databricks_token
+Environment=DATABRICKS_HTTP_PATH=/sql/protocolv1/o/your-workspace-id/your-cluster-id
+
+[Install]
+WantedBy=multi-user.target
