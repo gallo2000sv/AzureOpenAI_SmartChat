@@ -1,7 +1,7 @@
-# Email Analysis Project
+# AI-Powered Data Analysis Chatbot: Azure, Databricks, and OpenAI Integration
 
 ## Overview
-This project implements an email analysis system powered by Azure Databricks, FastAPI, and Streamlit. It processes and analyzes email data stored in Azure Blob Storage and provides insights through an interactive web interface.
+This project implements an email analysis system powered by Azure Databricks, FastAPI, and Streamlit. It processes and analyzes email data stored in a CSV file (or any other type if you specify it in the notebook code) in Azure Blob Storage and provides insights through an interactive web interface.
 
 ## Project Structure
 ```
