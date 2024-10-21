@@ -7,17 +7,20 @@ This project implements an email analysis system powered by Azure Databricks, Fa
 ```
 📁 project-root/
 ├── 📁 docs/
-│   ├── DATABRICKS_SETUP.md     # Databricks and Azure Storage configuration
-│   ├── DEPLOYMENT_GUIDE.md     # Production deployment instructions
-│   └── NGINX_CONFIG.md         # Nginx server configuration
+│   ├── Accessing_the_app_guide.md    # Application access instructions
+│   ├── DATABRICKS_SETUP.md           # Databricks and Azure Storage configuration
+│   ├── Databricks_Connection_Test_Guide.md  # Connection testing guide
+│   ├── Deployment_Guide.md           # Production deployment instructions
+│   └── Nginx_Config.md               # Nginx server configuration
 ├── 📁 examples/
-│   ├── nginx.conf              # Example Nginx configuration
-│   ├── streamlit.service       # Example Streamlit service configuration
-│   └── test_databricks.py      # Script to test Databricks connection
-├── 📁 notebooks/               # Databricks notebooks
-├── main.py                     # FastAPI backend
-├── streamlit_app.py           # Streamlit frontend
-├── requirements.txt           # Project dependencies
+│   ├── nginx.conf                    # Example Nginx configuration
+│   └── streamlit.service            # Example Streamlit service configuration
+├── 📁 notebooks/
+│   └── .env                         # Environment variables for notebooks
+├── main.py                         # FastAPI backend
+├── streamlit_app.py               # Streamlit frontend
+├── test_databrickconnection.py    # Databricks connection test script
+├── requirements.txt               # Project dependencies
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -49,9 +52,9 @@ pip install -r requirements.txt
 
 3. Configure Databricks connection:
 - Follow [DATABRICKS_SETUP.md](docs/DATABRICKS_SETUP.md) for detailed instructions
-- Test your connection:
+- Test your connection using the test script:
   ```bash
-  python examples/test_databricks.py
+  python test_databrickconnection.py
   ```
 
 4. Start the applications:
@@ -63,8 +66,12 @@ uvicorn main:app --reload --port 8000
 streamlit run streamlit_app.py
 ```
 
-## Production Deployment
-See [DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md) for complete deployment instructions.
+## Documentation
+- [Application Access Guide](docs/Accessing_the_app_guide.md) - How to access and use the application
+- [Databricks Setup](docs/DATABRICKS_SETUP.md) - Azure Storage and Databricks configuration
+- [Databricks Connection Test](docs/Databricks_Connection_Test_Guide.md) - How to test your Databricks connection
+- [Deployment Guide](docs/Deployment_Guide.md) - Production deployment steps
+- [Nginx Config](docs/Nginx_Config.md) - Web server configuration
 
 ## Application Access
 
@@ -77,6 +84,8 @@ See [DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md) for complete deployment inst
 - Main Application: `https://your_domain.com/your_app_path/`
 - API Endpoint: `https://your_domain.com/api/`
 - API Documentation: `https://your_domain.com/api/docs`
+
+For detailed access instructions, see [Accessing_the_app_guide.md](docs/Accessing_the_app_guide.md)
 
 ## Configuration Files
 
@@ -92,7 +101,7 @@ See [examples/streamlit.service](examples/streamlit.service) for the Streamlit s
 1. Databricks Connection:
    - Verify environment variables are set correctly
    - Ensure Databricks token has not expired
-   - Run `test_databricks.py` to verify connection
+   - Run `test_databrickconnection.py` to verify connection
 
 2. Application Access:
    - For local development, ensure ports 8000 and 8501 are available
@@ -112,11 +121,6 @@ See [examples/streamlit.service](examples/streamlit.service) for the Streamlit s
   sudo journalctl -u streamlit
   sudo tail -f /var/log/nginx/error.log
   ```
-
-## Documentation
-- [Databricks Setup](docs/DATABRICKS_SETUP.md) - Azure Storage and Databricks configuration
-- [Deployment Guide](docs/DEPLOYMENT_GUIDE.md) - Production deployment steps
-- [Nginx Config](docs/NGINX_CONFIG.md) - Web server configuration
 
 ## Contributing
 1. Fork the repository
